@@ -77,6 +77,9 @@ void makesine()
 
 }
 
+//set to lowest value after
+analogWrite(DAC1,0);
+
 }
 
 
