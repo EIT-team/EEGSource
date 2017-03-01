@@ -55,7 +55,7 @@ void makesine()
   {
   
   sampletimeold = micros();
-  analogWrite(DAC1, waveformsTable[iSample]);  // write the selected waveform on DAC0
+  analogWrite(DAC0, waveformsTable[iSample]);  // write the selected waveform on DAC0
 //  iSample++;
 //  if (iSample == maxSamplesNum) // Reset the counter to repeat the wave
 //  {
@@ -78,7 +78,7 @@ void makesine()
 }
 
 //set to lowest value after
-analogWrite(DAC1,0);
+analogWrite(DAC0,0);
 
 }
 
