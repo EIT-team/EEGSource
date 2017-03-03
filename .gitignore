@@ -14,3 +14,12 @@
 # Metadata
 *.aliases
 *.lvlps
+# Visual micro and platformio things
+**/*.sln
+**/*.suo
+**/*.vcxproj
+**/*.vcxproj.filters
+**/Visual*
+**/__vm*
+**/.pioenvs
+**/Release*
