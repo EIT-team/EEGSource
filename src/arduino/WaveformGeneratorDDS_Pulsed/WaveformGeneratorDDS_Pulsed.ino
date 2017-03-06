@@ -11,6 +11,9 @@ Wave every second through another timer
 
 
 int iSample = 0;
+int iRep = 0;
+
+int maxReps= 3;
 
 uint32_t dacout = waveformsTable[iSample];
 
@@ -81,8 +84,16 @@ void TC3_Handler() //this is the ISR for the 500kHz timer - runs every 2 uS
 	if (iSample == maxSamplesNum)
 	{
 		iSample = 0; //reset counter
-		TC_Stop(TC1, 0); //stop this ISR
+    iRep++;
+		
 	}
+
+ if (iRep == maxReps)
+ {
+  iSample =0;
+  iRep=0;
+  TC_Stop(TC1, 0); //stop this ISR
+ }
 
 
 	//digitalWriteDirect(41, 0);
