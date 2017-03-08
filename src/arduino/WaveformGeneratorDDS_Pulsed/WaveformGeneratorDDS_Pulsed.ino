@@ -10,10 +10,19 @@ Wave every second through another timer
 #include "Waveforms.h"
 
 
-int iSample = 0;
+int StartSample = 0;
+int EndSample = maxSamplesNum;
+
+int Start_pad = 12500; //maxSamplesNum - 25000; //12500
+int End_pad = 12500; //12500
+
+
+
+
+int iSample = StartSample;
 int iRep = 0;
 
-int maxReps= 3;
+int maxReps = 3;
 
 uint32_t dacout = waveformsTable[iSample];
 
@@ -81,19 +90,22 @@ void TC3_Handler() //this is the ISR for the 500kHz timer - runs every 2 uS
 	iSample++;
 
 	// if we have finished wavetable
-	if (iSample == maxSamplesNum)
+	if (iSample == EndSample)
 	{
-		iSample = 0; //reset counter
-    iRep++;
-		
-	}
+		iSample = StartSample; //reset counter
+		iRep++;
 
- if (iRep == maxReps)
- {
-  iSample =0;
-  iRep=0;
-  TC_Stop(TC1, 0); //stop this ISR
- }
+		if (iRep == maxReps - 1)
+		{
+			EndSample = End_pad; // if we are on last loop then only go to the pad end
+		}
+	}
+	// if we are on last loop
+	if (iRep == maxReps)
+	{
+
+		TC_Stop(TC1, 0); //stop this ISR
+	}
 
 
 	//digitalWriteDirect(41, 0);
@@ -106,6 +118,10 @@ void TC1_Handler() //this is the ISR for the 1Hz timer
 	TC_GetStatus(TC0, 1); //here TC2,1 means TIMER 2 channel 1
 
 	digitalWriteDirect(41, 1);
+
+	iRep = 0;
+	iSample = Start_pad;
+	EndSample = maxSamplesNum;
 
 	TC_Start(TC1, 0); //start the DAC timer ISR
 

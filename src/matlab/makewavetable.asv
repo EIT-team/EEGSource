@@ -64,7 +64,7 @@ hold off
 %think)
 
 
-phase_pad = 45;
+phase_pad = 90;
 phase_coeff = phase_pad/360;
 
 pad_length= round(length(y)*phase_coeff);
@@ -92,17 +92,17 @@ hold off
 %%
 
 y_padint=int16(y_pad); %make values  integers
-y_padstr=strjoin(cellstr(num2str(y_padint')),',');
+ystr=strjoin(cellstr(num2str(yint')),',');
 
-if min(y_padint) < 0 || max(y_padint) > 2^12
+if min(yint) < 0 || max(yint) > 2^12
     warning('out of range');
 end
 
 
-ArrayDefStr_pad=strcat('static uint16_t waveformsTable[maxSamplesNum] = {',y_padstr,'};');
+ArrayDefStr=strcat('static uint16_t waveformsTable[maxSamplesNum] = {',ystr,'};');
 
-fid=fopen('Waveforms_pad.h','w+');
-fprintf(fid,'%s\n',ArrayDefStr_pad);
+fid=fopen('Waveforms.h','w+');
+fprintf(fid,'%s\n',ArrayDefStr);
 fclose(fid);
 
 
