@@ -20,10 +20,10 @@ y=Vdaq*scf + Offset;
 Fs=50000;
 
 ts=1/Fs; %time between samples - this is determined by the speed of the arduino
-
+T=0.5;
 t=0:ts:T-ts; %full time vector
 yint=int16(y); %make values  integers
-ystr=strjoin(cellstr(num2str(yint')),',');
+ystr=strjoin(cellstr(num2str(yint)),',');
 
 if min(yint) < 0 || max(yint) > 2^12
     warning('out of range');
