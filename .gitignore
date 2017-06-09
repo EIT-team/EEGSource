@@ -23,3 +23,5 @@
 **/__vm*
 **/.pioenvs
 **/Release*
+**/*.tmp
+**/*.asv

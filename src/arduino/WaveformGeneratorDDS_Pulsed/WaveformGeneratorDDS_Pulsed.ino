@@ -43,8 +43,8 @@ void setup() {
 
 
 	TC_SetRC(TC1, 0, 84); // count 84 ticks on the 42MHz clock before calling the overflow routine - this gives an interupt every 2 us
-	TC_SetRC(TC0, 1, 656250); // count 656250 ticks on the 65.625 kHz clock before calling the overflow routine - this gives an interupt every 1 s
-
+	//TC_SetRC(TC0, 1, 656250); // count 656250 ticks on the 65.625 kHz clock before calling the overflow routine - this gives an interupt every 1 s
+	TC_SetRC(TC0, 1, 328125); // count 328125 ticks on the 65.625 kHz clock before calling the overflow routine - this gives an interupt every 0.5 s
 
 	// enable timer interrupts on the timer for DAC and Pulse timers
 	TC1->TC_CHANNEL[0].TC_IER = TC_IER_CPCS;   // IER = interrupt enable register
@@ -112,7 +112,7 @@ void TC3_Handler() //this is the ISR for the 500kHz timer - runs every 2 uS
 
 }
 
-void TC1_Handler() //this is the ISR for the 1Hz timer
+void TC1_Handler() //this is the ISR for the 2Hz timer
 {
 	// We need to get the status to clear it and allow the interrupt to fire again
 	TC_GetStatus(TC0, 1); //here TC2,1 means TIMER 2 channel 1
