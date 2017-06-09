@@ -17,7 +17,7 @@ end
 
 %% make highpass filter
 hpFilt = designfilt('highpassiir','FilterOrder',3, ...
-    'PassbandFrequency',0.5,'PassbandRipple',0.2, ...
+    'PassbandFrequency',5,'PassbandRipple',0.2, ...
     'SampleRate',Fs);
 % fvtool(hpFilt)
 
@@ -31,7 +31,7 @@ Veeg=filtfilt(hpFilt,Veeg); %filter out low freq fluctuations
 
 StartEvent =2; % use the events as starting points because why not
 
-T=Fs*10; % number of samples to take
+T=Fs*0.5; % number of samples to take
 
 Veeg=Veeg(HDR.EVENT.POS(StartEvent):HDR.EVENT.POS(StartEvent)+T-1);
 
@@ -46,7 +46,7 @@ fprintf('PP Value of signal is %.3f uV\n',Vdaq_pp);
 Vdaq=Vdaq./rms(Vdaq); % scale rms to be 1
 
 % interpolate data to sample rate of DAQ - as smooth an output as possible
-FsTarget=120000;
+FsTarget=50000;
 InterpFactor=FsTarget/Fs;
 
 %interp data
@@ -58,3 +58,5 @@ Vdaq([1 length(Vdaq)])=0;
 %write into labview directory because fiddling with paths is a ballache in
 %labview
 % dlmwrite('..\src\labview\EEG_data.txt',Vdaq);
+
+save('..\src\matlab\EEG_chn','Vdaq');
