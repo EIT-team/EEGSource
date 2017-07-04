@@ -7,7 +7,7 @@ Wave every second through another timer
 */
 
 #define maxSamplesNum 25000
-#include "WaveformsEEG.h"
+#include "WaveformsEEG_noFilt.h"
 
 
 int StartSample = 0;
@@ -25,6 +25,17 @@ int iRep = 0;
 int maxReps = 3;
 
 uint32_t dacout = waveformsTable[iSample];
+
+
+
+//taken from http://forum.arduino.cc/index.php?topic=129868.15
+inline void digitalWriteDirect(int pin, int val) {
+  if (val) g_APinDescription[pin].pPort->PIO_SODR = g_APinDescription[pin].ulPin;
+  else    g_APinDescription[pin].pPort->PIO_CODR = g_APinDescription[pin].ulPin;
+}
+
+
+
 
 void setup() {
 
@@ -129,11 +140,4 @@ void TC1_Handler() //this is the ISR for the 2Hz timer
 
 }
 
-
-
-//taken from http://forum.arduino.cc/index.php?topic=129868.15
-inline void digitalWriteDirect(int pin, int val) {
-	if (val) g_APinDescription[pin].pPort->PIO_SODR = g_APinDescription[pin].ulPin;
-	else    g_APinDescription[pin].pPort->PIO_CODR = g_APinDescription[pin].ulPin;
-}
 
