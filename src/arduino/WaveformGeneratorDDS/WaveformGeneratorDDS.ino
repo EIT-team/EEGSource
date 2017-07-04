@@ -13,6 +13,15 @@ int iSample = 0;
 
 uint32_t dacout = waveformsTable[iSample];
 
+
+
+//taken from http://forum.arduino.cc/index.php?topic=129868.15
+inline void digitalWriteDirect(int pin, int val) {
+  if (val) g_APinDescription[pin].pPort->PIO_SODR = g_APinDescription[pin].ulPin;
+  else    g_APinDescription[pin].pPort->PIO_CODR = g_APinDescription[pin].ulPin;
+}
+
+
 void setup() {
 
 	pinMode(41, OUTPUT);
@@ -85,9 +94,4 @@ void TC3_Handler() //this is the ISR for the 500kHz timer - runs every 2 uS
 
 }
 
-//taken from http://forum.arduino.cc/index.php?topic=129868.15
-inline void digitalWriteDirect(int pin, int val) {
-	if (val) g_APinDescription[pin].pPort->PIO_SODR = g_APinDescription[pin].ulPin;
-	else    g_APinDescription[pin].pPort->PIO_CODR = g_APinDescription[pin].ulPin;
-}
 

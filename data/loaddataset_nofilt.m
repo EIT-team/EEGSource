@@ -24,7 +24,8 @@ hpFilt = designfilt('highpassiir','FilterOrder',3, ...
 
 %%
 
-Veeg=filtfilt(hpFilt,Veeg); %filter out low freq fluctuations
+% Veeg=filtfilt(hpFilt,Veeg); %filter out low freq fluctuations
+Veeg=detrend(Veeg,'constant');
 
 % take a small chunk
 
@@ -58,4 +59,4 @@ Vdaq([1 length(Vdaq)])=0;
 %labview
 % dlmwrite('..\src\labview\EEG_data.txt',Vdaq);
 
-save('..\src\matlab\EEG_chn','Vdaq');
+save('..\src\matlab\EEG_chn_noFilt','Vdaq');
