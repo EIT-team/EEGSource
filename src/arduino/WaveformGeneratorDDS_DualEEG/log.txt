@@ -1,0 +1,40 @@
+[06/09/17 16:19:34] Processing default (targets: upload, platform: atmelsam, board: due, framework: arduino)
+
+Verbose mode can be enabled via `-v, --verbose` option
+Converting WaveformGeneratorDDS_EEG.ino
+Collected 3 compatible libraries
+Looking for dependencies...
+Project does not have dependencies
+Compiling .pioenvs\default\src\WaveformGeneratorDDS_EEG.ino.o
+Compiling .pioenvs\default\FrameworkArduinoVariant\variant.o
+Compiling .pioenvs\default\FrameworkArduino\IPAddress.o
+Compiling .pioenvs\default\FrameworkArduino\Print.o
+Archiving .pioenvs\default\libFrameworkArduinoVariant.a
+Compiling .pioenvs\default\FrameworkArduino\Reset.o
+Compiling .pioenvs\default\FrameworkArduino\RingBuffer.o
+Compiling .pioenvs\default\FrameworkArduino\Stream.o
+Compiling .pioenvs\default\FrameworkArduino\UARTClass.o
+Compiling .pioenvs\default\FrameworkArduino\USARTClass.o
+Compiling .pioenvs\default\FrameworkArduino\USB\CDC.o
+Compiling .pioenvs\default\FrameworkArduino\USB\PluggableUSB.o
+Compiling .pioenvs\default\FrameworkArduino\USB\USBCore.o
+Compiling .pioenvs\default\FrameworkArduino\WInterrupts.o
+Compiling .pioenvs\default\FrameworkArduino\WMath.o
+Compiling .pioenvs\default\FrameworkArduino\WString.o
+Compiling .pioenvs\default\FrameworkArduino\abi.o
+Compiling .pioenvs\default\FrameworkArduino\avr\dtostrf.o
+Compiling .pioenvs\default\FrameworkArduino\cortex_handlers.o
+Compiling .pioenvs\default\FrameworkArduino\hooks.o
+Compiling .pioenvs\default\FrameworkArduino\iar_calls_sam3.o
+Compiling .pioenvs\default\FrameworkArduino\itoa.o
+Compiling .pioenvs\default\FrameworkArduino\main.o
+Compiling .pioenvs\default\FrameworkArduino\new.o
+Compiling .pioenvs\default\FrameworkArduino\syscalls_sam3.o
+Compiling .pioenvs\default\FrameworkArduino\watchdog.o
+Compiling .pioenvs\default\FrameworkArduino\wiring.o
+Compiling .pioenvs\default\FrameworkArduino\wiring_analog.o
+Compiling .pioenvs\default\FrameworkArduino\wiring_digital.o
+Compiling .pioenvs\default\FrameworkArduino\wiring_pulse.o
+Compiling .pioenvs\default\FrameworkArduino\wiring_pulse_asm.o
+Compiling .pioenvs\default\FrameworkArduino\wiring_shift.o
+Archiving .pioenvs\default\libFrameworkArduino.a

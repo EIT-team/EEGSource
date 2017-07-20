@@ -12,7 +12,6 @@ A=2000; %amplitude approx max of 12bit DAC
 Offset=A; 
 
 scf=A/max(abs(Vdaq));
-
 y=Vdaq*scf + Offset;
 
 %%
@@ -29,13 +28,11 @@ if min(yint) < 0 || max(yint) > 2^12
     warning('out of range');
 end
 
-
 ArrayDefStr=strcat('static uint16_t waveformsTable[maxSamplesNum] = {',ystr,'};');
 
 fid=fopen('WaveformsEEG_noFilt.h','w+');
 fprintf(fid,'%s\n',ArrayDefStr);
 fclose(fid);
-
 
 %% check output after RC filter
 
@@ -112,11 +109,3 @@ hold off
 % fid=fopen('WaveformsEEG_pad.h','w+');
 % fprintf(fid,'%s\n',ArrayDefStr_pad);
 % fclose(fid);
-
-
-
-
-
-
-
-
